@@ -22,6 +22,7 @@ AGunAttempt::AGunAttempt()
 	//comps.Add(GunBaseStaticMesh);
 	//comps.Add(GunBarrelStaticMesh);
 	
+	AGunAttempt::GetComponents<UStaticMeshComponent>(comps);
 	
 	//BaseMap.Add("Base", GunBarrelStaticMesh);
 	//StaticMesh->SetRelativeScale3D({ 1.0f,1.0f,1.0f });
@@ -30,6 +31,8 @@ AGunAttempt::AGunAttempt()
 // Called when the game starts or when spawned
 void AGunAttempt::BeginPlay()
 {
+
+	//IdontKnowanymoreman.Add("Base", )
 	//if (auto j = GetPrimaryAssetId())
 	//UTestDataAsset* DATest = LoadObject()
 	//get all static mesh components 

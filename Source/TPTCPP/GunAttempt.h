@@ -34,6 +34,9 @@ class TPTCPP_API AGunAttempt : public AActor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* GunSightStaticMesh;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TArray<UStaticMeshComponent*> comps;
+
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	//TMap<FName, UDataAsset> GunPartPool;
 
@@ -42,9 +45,6 @@ class TPTCPP_API AGunAttempt : public AActor
 
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	//TArray<UStaticMesh*> BarrelMeshPool;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TArray<UStaticMeshComponent*> comps;
 
 
 	//LoadObject<UStaticMesh>()
@@ -56,6 +56,9 @@ class TPTCPP_API AGunAttempt : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AGunAttempt();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FName, UTestDataAsset*> IdontKnowanymoreman;
 
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	//UTestDataAsset 
@@ -97,5 +100,23 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//USceneComponent* GunFrame;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//UStaticMeshComponent* GunBaseStaticMesh;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//UStaticMeshComponent* GunBarrelStaticMesh;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//UStaticMeshComponent* GunStockStaticMesh;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//UStaticMeshComponent* GunSightStaticMesh;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//TArray<UStaticMeshComponent*> comps;
 
 };
