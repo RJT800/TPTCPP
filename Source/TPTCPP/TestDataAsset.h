@@ -8,22 +8,7 @@
 #include "TestDataAsset.generated.h"
 
 
-//USTRUCT(BlueprintType)
-//struct FGunBasePool : public FTableRowBase
-//{
-//	GENERATED_BODY()
-//
-//	//UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	//FText DisplayName;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	FText TagName;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	UStaticMesh* Mesh;
-//
-//	//UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//};
+
 
 /**
  * 
@@ -38,25 +23,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<UStaticMesh*> MeshPoolTest;
 
-//
-//	USTRUCT(BlueprintType)
-//	struct GunBasePool : public FTableRowBase
-//{
-//
-//	//UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	//FText DisplayName;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	FText TagName;
-//
-//	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//	UStaticMesh* Mesh;
-//
-//	//UPROPERTY(EditAnywhere, BlueprintReadOnly)
-//};
-
-	//UProperty(EditAnywhere)
-		//TMap<FName, FGunBasePool> AssetItems;
 
 
 	

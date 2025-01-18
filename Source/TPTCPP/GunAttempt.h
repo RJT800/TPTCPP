@@ -37,17 +37,8 @@ class TPTCPP_API AGunAttempt : public AActor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TArray<UStaticMeshComponent*> comps;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TMap<FName, UDataAsset> GunPartPool;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TArray<UStaticMesh*> BaseMeshPool;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TArray<UStaticMesh*> BarrelMeshPool;
-
-
-	//LoadObject<UStaticMesh>()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UDataAsset* Pool;
 
 
 	
@@ -58,28 +49,7 @@ public:
 	AGunAttempt();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TMap<FName, UTestDataAsset*> IdontKnowanymoreman;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UTestDataAsset 
-
-	//struct GunBase
-	//{
-	//	UStaticMeshComponent a;
-	//	UStaticMeshComponent b;
-	//	UStaticMeshComponent c;
-	//};
-
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BaseMap")
-	//TMap<FName, UStaticMeshComponent*> BaseMap;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BaseMap")
-	//TArray<UStaticMesh*> GunPartPool;
-	
-
-	//you cant use a tarray as a value in a tmap
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "BaseMap")
-	//TMap<FName, TArray<UStaticMesh*>> GunPartPools;
+	TMap<FName, UTestDataAsset*> DataAssetMap;
 
 
 protected:
@@ -89,34 +59,9 @@ protected:
 
 
 
-
-	//void getTag()
-	//{
-
-	//}
-
-
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//USceneComponent* GunFrame;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UStaticMeshComponent* GunBaseStaticMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UStaticMeshComponent* GunBarrelStaticMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UStaticMeshComponent* GunStockStaticMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UStaticMeshComponent* GunSightStaticMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TArray<UStaticMeshComponent*> comps;
 
 };
