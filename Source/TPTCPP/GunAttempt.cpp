@@ -14,14 +14,14 @@ AGunAttempt::AGunAttempt()
 	GunBarrelStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunBarrelStaticMesh"));
 	GunStockStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunStockStaticMesh"));
 	GunSightStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunSightStaticMesh"));*/
-	Pool = CreateDefaultSubobject<UDataAsset>(TEXT("Pool"));
+	//Pool = CreateDefaultSubobject<UDataAsset>(TEXT("Pool"));
 	//GunBaseStaticMesh->ComponentTags.Add(FName("Base"));
 	//GunBarrelStaticMesh->ComponentTags.Add(FName("Barrel"));
 	//GunStockStaticMesh->ComponentTags.Add(FName("Stock"));
 	//GunSightStaticMesh->ComponentTags.Add(FName("Sight"));
 
 
-	AGunAttempt::GetComponents<UStaticMeshComponent>(comps);
+	//AGunAttempt::GetComponents<UStaticMeshComponent>(comps);
 	
 
 }
@@ -64,7 +64,8 @@ void AGunAttempt::BeginPlay()
 	AActor* GunStock = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), ExtraArguments);
 	AActor* GunSight = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), ExtraArguments);
 
-	GunCore->AddComponentByClass(UStaticMeshComponent);
+	//UStaticMeshComponent* GunBasePart = GunCore->AddComponent(BasePart,false,Transform,ComponentClass)
+	GunCore->AddComponentByClass(TSubclassOf<UStaticMeshComponent>(), false, GetActorTransform(), true);
 
 	GunCore->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(BasePart);
 	GunBarrel->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(BarrelPart);
