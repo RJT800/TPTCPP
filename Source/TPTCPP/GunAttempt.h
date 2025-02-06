@@ -10,6 +10,7 @@
 #include "Engine/AssetManager.h"
 #include "Engine/DataAsset.h"
 
+
 #include "GunAttempt.generated.h"
 
 class UStaticMeshComponent;
@@ -23,16 +24,16 @@ class TPTCPP_API AGunAttempt : public AActor
 	USceneComponent* GunFrame;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* GunBaseStaticMesh;
+	UTestDataAsset* GunBaseStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* GunBarrelStaticMesh;
+	UTestDataAsset* GunBarrelStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* GunStockStaticMesh;
+	UTestDataAsset* GunStockStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* GunSightStaticMesh;
+	UTestDataAsset* GunSightStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TArray<UStaticMeshComponent*> comps;
@@ -40,16 +41,20 @@ class TPTCPP_API AGunAttempt : public AActor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDataAsset* Pool;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AActor> GunTemplate;
 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	//UDataAssetMap PoolList;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TMap<FName, UTestDataAsset*> DataAssetMap;
 	
 	
 public:	
 	// Sets default values for this actor's properties
 	AGunAttempt();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TMap<FName, UTestDataAsset*> DataAssetMap;
 
 
 protected:
