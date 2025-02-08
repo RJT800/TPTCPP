@@ -9,8 +9,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/AssetManager.h"
 #include "Engine/DataAsset.h"
-
-
+#include "Engine/World.h"
 #include "GunAttempt.generated.h"
 
 class UStaticMeshComponent;
@@ -23,32 +22,31 @@ class TPTCPP_API AGunAttempt : public AActor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* GunFrame;
 
+	// gun parts
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UTestDataAsset* GunBaseStaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UTestDataAsset* GunBarrelStaticMesh;
+	UStaticMeshComponent* GunBaseStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UTestDataAsset* GunStockStaticMesh;
+	UStaticMeshComponent* GunBarrelStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UTestDataAsset* GunSightStaticMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//TArray<UStaticMeshComponent*> comps;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UDataAsset* Pool;
+	UStaticMeshComponent* GunStockStaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<AActor> GunTemplate;
+	UStaticMeshComponent* GunSightStaticMesh;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	//UDataAssetMap PoolList;
-	
+	// part pools
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TMap<FName, UTestDataAsset*> DataAssetMap;
+	UTestDataAsset* GunBaseStaticMeshPool;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UTestDataAsset* GunBarrelStaticMeshPool;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UTestDataAsset* GunStockStaticMeshPool;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UTestDataAsset* GunSightStaticMeshPool;
 	
 	
 public:	

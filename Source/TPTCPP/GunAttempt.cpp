@@ -10,92 +10,70 @@ AGunAttempt::AGunAttempt()
 	PrimaryActorTick.bCanEverTick = true;
 	GunFrame = CreateDefaultSubobject<USceneComponent>(TEXT("GunFrame"));
 	GunFrame->SetupAttachment(RootComponent);
-	/*GunBaseStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunBaseStaticMesh"));
+
+	GunBaseStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunBaseStaticMesh"));
+	GunBaseStaticMesh->SetupAttachment(GunFrame);
+
 	GunBarrelStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunBarrelStaticMesh"));
-	GunStockStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunStockStaticMesh"));
-	GunSightStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunSightStaticMesh"));*/
-	//Pool = CreateDefaultSubobject<UDataAsset>(TEXT("Pool"));
-	//GunBaseStaticMesh->ComponentTags.Add(FName("Base"));
-	//GunBarrelStaticMesh->ComponentTags.Add(FName("Barrel"));
-	//GunStockStaticMesh->ComponentTags.Add(FName("Stock"));
-	//GunSightStaticMesh->ComponentTags.Add(FName("Sight"));
-
-
-	//AGunAttempt::GetComponents<UStaticMeshComponent>(comps);
+	GunBarrelStaticMesh->SetupAttachment(GunFrame);
 	
+	GunStockStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunStockStaticMesh"));
+	GunStockStaticMesh->SetupAttachment(GunFrame);
+	
+	GunSightStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GunSightStaticMesh"));
+	GunSightStaticMesh->SetupAttachment(GunFrame);
+
+
+	GunBaseStaticMesh->ComponentTags.Add(FName("Base"));
+	GunBarrelStaticMesh->ComponentTags.Add(FName("Barrel"));
+	GunStockStaticMesh->ComponentTags.Add(FName("Stock"));
+	GunSightStaticMesh->ComponentTags.Add(FName("Sight"));
 
 }
 
 // Called when the game starts or when spawned
 void AGunAttempt::BeginPlay()
 {
-	int randomNumber = FMath::RandRange(0, GunBaseStaticMesh->MeshPoolTest.Num() - 1);
-	UStaticMesh* BasePart = GunBaseStaticMesh->MeshPoolTest[randomNumber];
+	int randomNumber = FMath::RandRange(0, GunBaseStaticMeshPool->MeshPoolTest.Num() - 1);
+	UStaticMesh* BasePart = GunBaseStaticMeshPool->MeshPoolTest[randomNumber];
 
-	randomNumber = FMath::RandRange(0, GunBarrelStaticMesh->MeshPoolTest.Num() - 1);
-	UStaticMesh* BarrelPart = GunBarrelStaticMesh->MeshPoolTest[randomNumber];
+	randomNumber = FMath::RandRange(0, GunBarrelStaticMeshPool->MeshPoolTest.Num() - 1);
+	UStaticMesh* BarrelPart = GunBarrelStaticMeshPool->MeshPoolTest[randomNumber];
 
-	randomNumber = FMath::RandRange(0, GunStockStaticMesh->MeshPoolTest.Num() - 1);
-	UStaticMesh* StockPart = GunStockStaticMesh->MeshPoolTest[randomNumber];
+	randomNumber = FMath::RandRange(0, GunStockStaticMeshPool->MeshPoolTest.Num() - 1);
+	UStaticMesh* StockPart = GunStockStaticMeshPool->MeshPoolTest[randomNumber];
 
-	randomNumber = FMath::RandRange(0, GunSightStaticMesh->MeshPoolTest.Num() - 1);
-	UStaticMesh* SightPart = GunSightStaticMesh->MeshPoolTest[randomNumber];
+	randomNumber = FMath::RandRange(0, GunSightStaticMeshPool->MeshPoolTest.Num() - 1);
+	UStaticMesh* SightPart = GunSightStaticMeshPool->MeshPoolTest[randomNumber];
 
-	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Cyan, FString::Printf(TEXT("Here")));
+	TArray<UStaticMeshComponent*> MeshComponents;
+	this->GetComponents(MeshComponents);
 
-	
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetActorLocation(), FRotator(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetLocation(), FRotator(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetTransform(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetActorTransform(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), FTransform(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), FVector(), FRotator(), FActorSpawnParameters());
-	AActor* GunCore = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), FActorSpawnParameters());
-	//AActor* GunCore = GetWorld()->SpawnActorAbsolute(TSubclassOf<AActor*>(), GetFTransform(), FActorSpawnParameters());
-
-	FActorSpawnParameters ExtraArguments = FActorSpawnParameters();
-	ExtraArguments.Owner = GunCore;
-
-	//AActor* GunBarrel = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetActorLocation(), FRotator(), ExtraArguments);
-	//AActor* GunStock = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetActorLocation(), FRotator(), ExtraArguments);
-	//AActor* GunSight = GetWorld()->SpawnActor(TSubclassOf<AActor*>(), GetActorLocation(), FRotator(), ExtraArguments);
-
-	AActor* GunBarrel = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), ExtraArguments);
-	AActor* GunStock = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), ExtraArguments);
-	AActor* GunSight = GetWorld()->SpawnActor<AActor>(TSubclassOf<AActor>(), GetActorTransform(), ExtraArguments);
-
-	//UStaticMeshComponent* GunBasePart = GunCore->AddComponent(BasePart,false,Transform,ComponentClass)
-	GunCore->AddComponentByClass(TSubclassOf<UStaticMeshComponent>(), false, GetActorTransform(), true);
-
-	GunCore->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(BasePart);
-	GunBarrel->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(BarrelPart);
-	GunStock->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(StockPart);
-	GunSight->GetComponentByClass<UStaticMeshComponent>()->SetStaticMesh(SightPart);
-
-
-	TArray<AActor*> templateChildren;
-	Cast<AActor>(GunTemplate)->GetAllChildActors(templateChildren, true);
-
-	for (int i = 0; i < templateChildren.Num(); i++)
+	for (int i = 0; i < MeshComponents.Num(); i++)
 	{
-		AActor* gunPart = templateChildren[i];
+		UStaticMeshComponent* gunPart = MeshComponents[i];		
 
-		GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Cyan, FString::Printf(TEXT("Here")));
-		if (gunPart->ActorHasTag("Barrel"))
+		if (gunPart->ComponentHasTag("Base"))
 		{
-			GunCore->SetActorLocation(gunPart->GetActorLocation());
+			gunPart->SetStaticMesh(BasePart);
+			gunPart->SetRelativeLocation(FVector(0,0,0),false, (FHitResult*)nullptr, ETeleportType::ResetPhysics);
 		}
-		else if (gunPart->ActorHasTag("Stock"))
+		else if (gunPart->ComponentHasTag("Barrel"))
 		{
-			GunCore->SetActorLocation(gunPart->GetActorLocation());
+			gunPart->SetStaticMesh(BarrelPart);
+			gunPart->SetRelativeLocation(FVector(150,0,0),false, (FHitResult*)nullptr, ETeleportType::ResetPhysics);
 		}
-		else if (gunPart->ActorHasTag("Sight"))
+		else if (gunPart->ComponentHasTag("Stock"))
 		{
-			GunCore->SetActorLocation(gunPart->GetActorLocation());
+			gunPart->SetStaticMesh(StockPart);
+			gunPart->SetRelativeLocation(FVector(-150,0,0),false, (FHitResult*)nullptr, ETeleportType::ResetPhysics);
+		}
+		else if (gunPart->ComponentHasTag("Sight"))
+		{
+			gunPart->SetStaticMesh(SightPart);
+			gunPart->SetRelativeLocation(FVector(0,0,150),false, (FHitResult*)nullptr, ETeleportType::ResetPhysics);
 		}
 	}
-
-
 	Super::BeginPlay();	
 }
 
